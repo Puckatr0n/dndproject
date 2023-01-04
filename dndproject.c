@@ -16,102 +16,126 @@ int main()
 
     //function library
 
+    int borderLine()
+    {
+        printf("\n------------------------------------------------------------------------------\n\n");
+    }
+
+     int welcomeMessage()
+    {
+        borderLine();
+        printf("Hi, my name is Johnson! I am a friendly little chatbot!\n");
+        printf("I am here to help you build your Dungeons and Dragons character!\n");
+        printf("We'll be working in 5th edition for now (it's the only one I actually know).\n");
+        printf("If you notice any Oxford commas or excessive useages of exclamation marks,\n");
+        printf("those are probably conscious and deliberate ;)\n");
+        printf("Let's get started!\n");
+    }
+
     int strengthScoreInput()
     {
-    printf("Input your strength score (a number between 1 and 20): "); 
-    scanf("%d", &strengthScore);
-
-    if(strengthScore > maxStatScore || strengthScore < minStatScore)
-    {
-        printf("Invalid input.\n");
-        fflush(stdin);
-        strengthScoreInput();
+        //borderLine();
+        printf("\nInput your strength score (a number between 1 and 20): "); 
+        scanf("%d", &strengthScore);
+        if(strengthScore > maxStatScore || strengthScore < minStatScore)
+        {
+            //borderLine();
+            printf("That's an invalid input. Dont worry, you can try again.\n");
+            fflush(stdin);
+            strengthScoreInput();
     
-    } else {
-        fflush(stdin);
-        printf("Great, your base strength score is %d.\n", strengthScore);
-    }
+        } else {
+            fflush(stdin);
+            printf("Great, your base strength score is %d.\n", strengthScore);
+        }
     }
  
     int dexterityScoreInput()
     {
-    printf("Input your dexterity score (a number between 1 and 20): ");
-    scanf("%d", &dexterityScore);
-    if(dexterityScore > maxStatScore || dexterityScore < minStatScore)
-    {
-        printf("Invalid input.\n");
-        fflush(stdin);
-        dexterityScoreInput();
-    } else {
-        fflush(stdin);
-        printf("Great, your base dexterity score is %d.\n", dexterityScore);
-    }
+        //borderLine();
+        printf("\nInput your dexterity score (a number between 1 and 20): ");
+        scanf("%d", &dexterityScore);
+        if(dexterityScore > maxStatScore || dexterityScore < minStatScore)
+        {
+            printf("That's an invalid input. Dont worry, you can try again.\n");
+            fflush(stdin);
+            dexterityScoreInput();
+        } else {
+            fflush(stdin);
+            printf("Great, your base dexterity score is %d.\n", dexterityScore);
+        }
     }
 
     int constitutionScoreInput()
     {
-        printf("Input your constitution score (a number between 1 and 20): ");
+        //borderLine();
+        printf("\nInput your constitution score (a number between 1 and 20): ");
         scanf("%d", &constitutionScore);
         if(constitutionScore > maxStatScore || constitutionScore < minStatScore)
-    {
-        printf("Invalid input.\n");
-        fflush(stdin);
-        constitutionScoreInput();
-    } else {
-        fflush(stdin);
-        printf("Great, your base constitution score is %d.\n", constitutionScore);
-    }
+            {
+                printf("That's an invalid input. Dont worry, you can try again.\n");
+                fflush(stdin);
+                constitutionScoreInput();
+            } else {
+                fflush(stdin);
+                printf("Great, your base constitution score is %d.\n", constitutionScore);
+            }
     }
 
     int intelligenceScoreInput()
     {
-    printf("Input your intelligence score (a number between 1 and 20): ");
-    scanf("%d", &intelligenceScore);
-    if(intelligenceScore > maxStatScore || intelligenceScore < minStatScore)
-    {
-        printf("Invalid input.\n");
-        fflush(stdin);
-        intelligenceScoreInput();
-    } else {
-        fflush(stdin);
-        printf("Great, your base Intelligence score is %d.\n", intelligenceScore);
-    }
+        //borderLine();
+        printf("\nInput your intelligence score (a number between 1 and 20): ");
+        scanf("%d", &intelligenceScore);
+        if(intelligenceScore > maxStatScore || intelligenceScore < minStatScore)
+        {
+            printf("That's an invalid input. Dont worry, you can try again.\n");
+            fflush(stdin);
+            intelligenceScoreInput();
+        } else {
+            fflush(stdin);
+            printf("Great, your base Intelligence score is %d.\n", intelligenceScore);
+        }
     }
 
     int wisdomScoreInput()
-    {
-        printf("Input your wisdom score (a number between 1 and 20): ");
+    {   
+        //borderLine();
+        printf("\nInput your wisdom score (a number between 1 and 20): ");
         scanf("%d", &wisdomScore);
         if(wisdomScore > maxStatScore || wisdomScore < minStatScore)
-    {
-        printf("Invalid input.\n");
-        fflush(stdin);
-        wisdomScoreInput();
-    } else {
-        fflush(stdin);
-        printf("Great, your base wisdom score is %d.\n", wisdomScore);
-    }
+        {
+            printf("That's an invalid input. Dont worry, you can try again.\n");
+            fflush(stdin);
+            wisdomScoreInput();
+        } else {
+            fflush(stdin);
+            printf("Great, your base wisdom score is %d.\n", wisdomScore);
+        }
     }
 
     int charismaScoreInput()
     {
-        printf("Input your charisma score (a number between 1 and 20): ");
+        //borderLine();
+        printf("\nInput your charisma score (a number between 1 and 20): ");
         scanf("%d", &charismaScore);
         if(charismaScore > maxStatScore || charismaScore < minStatScore)
-    {
-        printf("Invalid input.\n");
-        fflush(stdin);
-        charismaScoreInput();
-    } else {
-        fflush(stdin);
-        printf("Great, your base charisma score is %d.\n", charismaScore);
-    }
+        {
+            printf("That's an invalid input. Dont worry, you can try again.\n");
+            fflush(stdin);
+            charismaScoreInput();
+        } else {
+            fflush(stdin);
+            printf("Great, your base charisma score is %d.\n", charismaScore);
+        }
     }
 
     int characterStatisticsPrintout()
     {
+        borderLine();
         printf("Your base statistics:\n");
-        if(strengthScore >= 0 && strengthScore <= 9){
+        if(strengthScore >= 0 && strengthScore <= 9)
+        {
             printf("Strength:     %d     Intelligence: %d\n", strengthScore, intelligenceScore);
         } else {
             printf("Strength:     %d    Intelligence: %d\n", strengthScore, intelligenceScore);
@@ -126,15 +150,14 @@ int main()
         } else {
             printf("Constitution: %d    Charisma:     %d\n", constitutionScore, charismaScore);
         }
+        borderLine();
     }
 
-    int welcomeMessage()
-    {
-        printf("Welcome to this DND adventure.\n");
-    }
+   
 
     int baseStatisticsInput()
     {
+    int input;
     strengthScoreInput();
     dexterityScoreInput();
     constitutionScoreInput();
@@ -142,14 +165,9 @@ int main()
     wisdomScoreInput();
     charismaScoreInput();
     characterStatisticsPrintout();
-    }
-
-    int redoStats()
-    {
-        int input;
-        printf("Are you happy with these statistics?\n");
+        printf("Are you happy with these statistics?\n\n");
         printf("1. Yes, I'd like to continue.\n");  
-        printf("2. No, I'd like to redo them.\n");
+        printf("2. No, I'd like to redo them.\n\n");
         printf("Select an option and press enter: ");
         scanf("%d", &input);
         if(input == 1)
@@ -159,9 +177,12 @@ int main()
             return 0;
         } else if (input == 2)
         {   
-            
+            borderLine();
             printf("Which statistics would you like to redo?\n");
-            printf("7. All of them!");
+            printf("1. Strength     4. Intelligence\n");
+            printf("2. Dexterity    5. Wisdom\n");
+            printf("3. Constitution 6. Charisma\n");
+            printf("7. All of them!\n");
             fflush(stdin);
             scanf("%d", &input);
             if(input == 7)
@@ -171,11 +192,12 @@ int main()
         }
     }
 
+
+
    
 
      //program body
     welcomeMessage();
     baseStatisticsInput();
-    redoStats();
     return 0;
 }
