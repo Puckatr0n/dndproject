@@ -133,7 +133,6 @@ int main()
         printf("Welcome to this DND adventure.\n");
     }
 
-   
     int baseStatisticsInput()
     {
     strengthScoreInput();
@@ -142,11 +141,41 @@ int main()
     intelligenceScoreInput();
     wisdomScoreInput();
     charismaScoreInput();
+    characterStatisticsPrintout();
     }
+
+    int redoStats()
+    {
+        int input;
+        printf("Are you happy with these statistics?\n");
+        printf("1. Yes, I'd like to continue.\n");  
+        printf("2. No, I'd like to redo them.\n");
+        printf("Select an option and press enter: ");
+        scanf("%d", &input);
+        if(input == 1)
+        {
+            printf("placeholder text");
+            fflush(stdin);
+            return 0;
+        } else if (input == 2)
+        {   
+            
+            printf("Which statistics would you like to redo?\n");
+            printf("7. All of them!");
+            fflush(stdin);
+            scanf("%d", &input);
+            if(input == 7)
+            {
+                baseStatisticsInput();
+            }
+        }
+    }
+
+   
 
      //program body
     welcomeMessage();
     baseStatisticsInput();
-    characterStatisticsPrintout();
+    redoStats();
     return 0;
 }
