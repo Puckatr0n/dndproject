@@ -6,12 +6,13 @@ int main()
 
     int maxStatScore = 20;
     int minStatScore = 1;
-    int strengthScore;
-    int dexterityScore;
-    int constitutionScore;
-    int intelligenceScore;
-    int wisdomScore;
-    int charismaScore;
+    int pointBuyPool = 27;
+    int strengthScore = 8;
+    int dexterityScore = 8;
+    int constitutionScore = 8;
+    int intelligenceScore = 8;
+    int wisdomScore = 8;
+    int charismaScore = 8;
     int proficiencyBonus = 2;
 
     //function library
@@ -21,16 +22,7 @@ int main()
         printf("\n------------------------------------------------------------------------------\n\n");
     }
 
-     int welcomeMessage()
-    {
-        borderLine();
-        printf("Hi, my name is Johnson! I am a friendly little chatbot!\n");
-        printf("I am here to help you build your Dungeons and Dragons character!\n");
-        printf("We'll be working in 5th edition for now (it's the only one I actually know).\n");
-        printf("If you notice any Oxford commas or excessive useages of exclamation marks,\n");
-        printf("those are probably conscious and deliberate ;)\n");
-        printf("Let's get started!\n");
-    }
+   
 
     int strengthScoreInput()
     {
@@ -192,12 +184,62 @@ int main()
         }
     }
 
-
-
-   
-
+        
+    int pointBuy()
+    {
+        int input;
+        printf("Select an option to add or remove a point from a statistic.\n");
+        printf("15 points is the maximum, 8 is the minimum.\n");
+        printf("\n");
+        printf("Point pool: %d\n", pointBuyPool);
+        printf("\n");
+        printf("1. Strength Up         3. Dexterity Up       5. Constitution Up\n");
+        printf("2. Strength Down       4. Dexterity Down     6. Constitution Down\n");
+        printf("\n");
+        printf("7. Intelligence Up     9. Wisdom Up         11. Charisma Up\n");
+        printf("8. Intelligence Down  10. Wisdom Down       12. Charisma Down\n");
+        printf("\n");
+        printf("Select a number and press enter: ");
+        scanf("%d", &input);
+        if(input < 1 || input > 12)
+        {
+            printf("Invalid input!");
+            pointBuy();
+        } else if (input == 1)
+        {
+            printf("test");
+        }
+    }
+    int welcomeMessage()
+    {
+        int input;
+        borderLine();
+        printf("Hi, my name is Johnson! I am a friendly little chatbot!\n");
+        printf("I am here to help you build your Dungeons and Dragons character!\n");
+        printf("We'll be working in 5th edition for now (it's the only one I actually know).\n");
+        printf("If you notice any Oxford commas or excessive useages of exclamation marks,\n");
+        printf("those are probably conscious and deliberate ;)\n");
+        printf("Let's get started!\n");
+        printf("Would you like to roll your own statistics, or use the 'point buy' system?\n");
+        printf("1. Roll own statistics  2. Point buy\n");
+        scanf("%d", &input);
+        if(input < 1 || input > 2)
+        {
+            printf("Invalid input.");
+            fflush(stdin);
+            welcomeMessage();
+        } else if(input == 1)
+        {
+            fflush(stdin);
+            baseStatisticsInput();    
+        } else if(input == 2)
+        {   
+            fflush(stdin);
+            pointBuy();
+        }
+    }
+ 
      //program body
     welcomeMessage();
-    baseStatisticsInput();
     return 0;
 }
