@@ -6,7 +6,7 @@ int main()
 
     int maxStatScore = 20;
     int minStatScore = 1;
-    int pointBuyPool = 27;
+    int pointPool = 27;
     int strengthScore = 8;
     int dexterityScore = 8;
     int constitutionScore = 8;
@@ -184,31 +184,481 @@ int main()
         }
     }
 
+    int pointAllocation()
+            {
+            int input;
+            borderLine();
+            printf("Select an option to add or remove a point from a statistic.\n");
+            printf("15 points is the maximum, 8 is the minimum.\n");
+            printf("\n");
+            printf("Point pool: %d\n", pointPool);
+            printf("\n\n");
+            printf("Scores:\n");
+            if(strengthScore >= 0 && strengthScore <= 9)
+            {
+                printf("Strength:     %d     1. Strength Up         7. Strength Down\n", strengthScore);
+            } else {
+                printf("Strength:     %d    1. Strength Up         7. Strength Down\n", strengthScore);
+            }
+            if(dexterityScore >= 0 && dexterityScore <= 9)
+            {
+                printf("Dexterity:    %d     2. Dexterity Up        8. Dexterity Down\n", dexterityScore);
+            } else {
+                printf("Dexterity:    %d    2. Dexterity Up        8. Dexterity Down\n", dexterityScore);
+            }
+            if(constitutionScore >= 0 && constitutionScore <= 9)
+            {
+                printf("Constitution: %d     3. Constitution Up     9. Constitution Down\n", constitutionScore);
+            } else {
+                printf("Constitution: %d    3. Constitution Up     9. Constitution Down\n", constitutionScore);
+            }
+            if(intelligenceScore >= 0 && intelligenceScore <= 9)
+            {
+                printf("Intelligence: %d     4. Intelligence Up     10. Intelligence Down\n", intelligenceScore);
+            } else {
+                printf("Intelligence: %d    4. Intelligence Up     10. Intelligence Down\n", intelligenceScore);
+            }
+            if(wisdomScore >= 0 && wisdomScore <= 9)
+            {
+                printf("Wisdom:       %d     5. Wisdom Up           11. Wisdom Down\n", wisdomScore);
+            } else {
+                printf("Wisdom:       %d    5. Wisdom Up           11. Wisdom Down\n", wisdomScore);
+            }
+            if(charismaScore >= 0 && charismaScore <= 9)
+            {
+                printf("Charisma:     %d     6. Charisma Up         12. Charisma Down\n", charismaScore);
+            } else {
+                printf("Charisma:     %d    6. Charisma Up         12. Charisma Down\n", charismaScore);
+            }
+            printf("\n");
+            if(pointPool == 0)
+            {
+                borderLine();
+                printf("Are you happy with these statistics?\n");
+                printf("1. Yes 2. No\n");
+                fflush(stdin);
+                scanf("%d", &input);
+                if(input == 1)
+                {
+                    printf("placeholder text for species selection\n");
+                } else if (input == 2)
+                {
+                    printf("Reset your ability scores and start over?\n");
+                    printf("1. Yes  2. No\n");
+                    fflush(stdin);
+                    scanf("%d", &input);
+                    if(input < 1 || input > 2)
+                    {
+                        printf("Invalid input\n");
+                        pointAllocation();
+                    }
+                    if(input == 1)
+                    {
+                        strengthScore = 8;
+                        dexterityScore = 8;
+                        constitutionScore = 8;
+                        intelligenceScore = 8;
+                        wisdomScore = 8;
+                        charismaScore = 8;
+                        pointPool = 27;
+                        pointAllocation();
+                    } else if (input == 2)
+                    {
+                        pointAllocation();
+                    }
+                }
+            }
+            printf("Select a number and press enter: ");
+            scanf("%d", &input);
+            if(input < 1 || input > 12)
+            {
+                printf("Invalid input!");
+                pointAllocation();
+            } else if (input == 1)
+            {
+                if(strengthScore <= 12)
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Strength increased by 1 point.\n");
+                    pointPool--;
+                    strengthScore++;
+                    pointAllocation();
+                } else if (strengthScore == 13) 
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Strength increased by 1 point.\n");
+                    pointPool -= 2;
+                    strengthScore++;
+                    pointAllocation();    
+                }   else if (strengthScore == 14)
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Strength increased by 1 point.\n");
+                    pointPool -= 3;
+                    strengthScore++;
+                    pointAllocation();
+                }   else if (strengthScore >= 15)
+                {
+                    borderLine();
+                    pointAllocation();
+                }
+            } else if (input == 7)
+            {
+                if(strengthScore == 15)
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Strength decreased by 1 point.\n");
+                    pointPool += 3;
+                    strengthScore--;
+                    pointAllocation();
+                } else if (strengthScore == 14)
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Strength decreased by 1 point.\n");
+                    pointPool += 2;
+                    strengthScore--;
+                    pointAllocation();  
+                } else if (strengthScore <= 13 && strengthScore != 8)
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Strength decreased by 1 point.\n");
+                    pointPool++;
+                    strengthScore--;
+                    pointAllocation();
+                } else if(strengthScore == 8)
+                {
+                    borderLine();
+                    pointAllocation();
+                }
+            } else if (input == 2)
+            {
+                if(dexterityScore <= 12)
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Dexterity increased by 1 point.\n");
+                    pointPool--;
+                    dexterityScore++;
+                    pointAllocation();
+                } else if (dexterityScore == 13) 
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Dexterity increased by 1 point.\n");
+                    pointPool -= 2;
+                    dexterityScore++;
+                    pointAllocation();    
+                }   else if (dexterityScore == 14)
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Dexterity increased by 1 point.\n");
+                    pointPool -= 3;
+                    dexterityScore++;
+                    pointAllocation();
+                }   else if (dexterityScore >= 15)
+                {
+                    borderLine();
+                    pointAllocation();
+                }
+            } else if (input == 8)
+            {
+                if(dexterityScore == 15)
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Dexterity decreased by 1 point.\n");
+                    pointPool += 3;
+                    dexterityScore--;
+                    pointAllocation();
+                } else if (dexterityScore == 14)
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Dexterity decreased by 1 point.\n");
+                    pointPool += 2;
+                    dexterityScore--;
+                    pointAllocation();  
+                } else if (dexterityScore <= 13 && dexterityScore != 8)
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Dexterity decreased by 1 point.\n");
+                    pointPool++;
+                    dexterityScore--;
+                    pointAllocation();
+                } else if(dexterityScore == 8)
+                {
+                    borderLine();
+                    pointAllocation();
+                }
+            } else if (input == 3)
+            {
+                if(constitutionScore <= 12)
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Constitution increased by 1 point.\n");
+                    pointPool--;
+                    constitutionScore++;
+                    pointAllocation();
+                } else if (constitutionScore == 13) 
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Constitution increased by 1 point.\n");
+                    pointPool -= 2;
+                    constitutionScore++;
+                    pointAllocation();    
+                }   else if (constitutionScore == 14)
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Constitution increased by 1 point.\n");
+                    pointPool -= 3;
+                    constitutionScore++;
+                    pointAllocation();
+                }   else if (constitutionScore >= 15)
+                {
+                    borderLine();
+                    pointAllocation();
+                }
+            } else if (input == 9)
+            {
+                if(constitutionScore == 15)
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Constitution decreased by 1 point.\n");
+                    pointPool += 3;
+                    constitutionScore--;
+                    pointAllocation();
+                } else if (constitutionScore == 14)
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Constitution decreased by 1 point.\n");
+                    pointPool += 2;
+                    constitutionScore--;
+                    pointAllocation();  
+                } else if (constitutionScore <= 13 && constitutionScore != 8)
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Constitution decreased by 1 point.\n");
+                    pointPool++;
+                    constitutionScore--;
+                    pointAllocation();
+                } else if(constitutionScore == 8)
+                {
+                    borderLine();
+                    pointAllocation();
+                }
+            } else if (input == 4)
+            {
+                if(intelligenceScore <= 12)
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Intelligence increased by 1 point.\n");
+                    pointPool--;
+                    intelligenceScore++;
+                    pointAllocation();
+                } else if (intelligenceScore == 13) 
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Intelligence increased by 1 point.\n");
+                    pointPool -= 2;
+                    intelligenceScore++;
+                    pointAllocation();    
+                }   else if (intelligenceScore == 14)
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Intelligence increased by 1 point.\n");
+                    pointPool -= 3;
+                    intelligenceScore++;
+                    pointAllocation();
+                }   else if (intelligenceScore >= 15)
+                {
+                    borderLine();
+                    pointAllocation();
+                }
+            } else if (input == 10)
+            {
+                if(intelligenceScore == 15)
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Intelligence decreased by 1 point.\n");
+                    pointPool += 3;
+                    intelligenceScore--;
+                    pointAllocation();
+                } else if (intelligenceScore == 14)
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Intelligence decreased by 1 point.\n");
+                    pointPool += 2;
+                    intelligenceScore--;
+                    pointAllocation();  
+                } else if (intelligenceScore <= 13 && intelligenceScore != 8)
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Intelligence decreased by 1 point.\n");
+                    pointPool++;
+                    intelligenceScore--;
+                    pointAllocation();
+                } else if(intelligenceScore == 8)
+                {
+                    borderLine();
+                    pointAllocation();
+                }
+            } else if (input == 5)
+            {
+                if(wisdomScore <= 12)
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Wisdom increased by 1 point.\n");
+                    pointPool--;
+                    wisdomScore++;
+                    pointAllocation();
+                } else if (wisdomScore == 13) 
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Wisdom increased by 1 point.\n");
+                    pointPool -= 2;
+                    wisdomScore++;
+                    pointAllocation();    
+                }   else if (wisdomScore == 14)
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Wisdom increased by 1 point.\n");
+                    pointPool -= 3;
+                    wisdomScore++;
+                    pointAllocation();
+                }   else if (wisdomScore >= 15)
+                {
+                    borderLine();
+                    pointAllocation();
+                }
+            } else if (input == 11)
+            {
+                if(wisdomScore == 15)
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Wisdom decreased by 1 point.\n");
+                    pointPool += 3;
+                    wisdomScore--;
+                    pointAllocation();
+                } else if (wisdomScore == 14)
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Wisdom decreased by 1 point.\n");
+                    pointPool += 2;
+                    wisdomScore--;
+                    pointAllocation();  
+                } else if (wisdomScore <= 13 && wisdomScore != 8)
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Wisdom decreased by 1 point.\n");
+                    pointPool++;
+                    wisdomScore--;
+                    pointAllocation();
+                } else if(wisdomScore == 8)
+                {
+                    borderLine();
+                    pointAllocation();
+                }
+            } else if (input == 6)
+            {
+                if(charismaScore <= 12)
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Charisma increased by 1 point.\n");
+                    pointPool--;
+                    charismaScore++;
+                    pointAllocation();
+                } else if (charismaScore == 13) 
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Charisma increased by 1 point.\n");
+                    pointPool -= 2;
+                    charismaScore++;
+                    pointAllocation();    
+                }   else if (charismaScore == 14)
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Charisma increased by 1 point.\n");
+                    pointPool -= 3;
+                    charismaScore++;
+                    pointAllocation();
+                }   else if (charismaScore >= 15)
+                {
+                    borderLine();
+                    pointAllocation();
+                }
+            } else if (input == 12)
+            {
+                if(charismaScore == 15)
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Charisma decreased by 1 point.\n");
+                    pointPool += 3;
+                    charismaScore--;
+                    pointAllocation();
+                } else if (charismaScore == 14)
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Charisma decreased by 1 point.\n");
+                    pointPool += 2;
+                    charismaScore--;
+                    pointAllocation();  
+                } else if (charismaScore <= 13 && charismaScore != 8)
+                {
+                    borderLine();
+                    printf("\n");
+                    printf("Charisma decreased by 1 point.\n");
+                    pointPool++;
+                    charismaScore--;
+                    pointAllocation();
+                } else if(charismaScore == 8)
+                {
+                    borderLine();
+                    pointAllocation();
+                }
+            }
+        }
         
-    int pointBuy()
+    int pointBuyInitialise()
     {
         int input;
-        printf("Select an option to add or remove a point from a statistic.\n");
-        printf("15 points is the maximum, 8 is the minimum.\n");
-        printf("\n");
-        printf("Point pool: %d\n", pointBuyPool);
-        printf("\n");
-        printf("1. Strength Up         3. Dexterity Up       5. Constitution Up\n");
-        printf("2. Strength Down       4. Dexterity Down     6. Constitution Down\n");
-        printf("\n");
-        printf("7. Intelligence Up     9. Wisdom Up         11. Charisma Up\n");
-        printf("8. Intelligence Down  10. Wisdom Down       12. Charisma Down\n");
-        printf("\n");
-        printf("Select a number and press enter: ");
-        scanf("%d", &input);
-        if(input < 1 || input > 12)
-        {
-            printf("Invalid input!");
-            pointBuy();
-        } else if (input == 1)
-        {
-            printf("test");
-        }
+        int strengthScore = 8;
+        int dexterityScore = 8;
+        int constitutionScore = 8;
+        int intelligenceScore = 8;
+        int wisdomScore = 8;
+        int charismaScore = 8;
+        pointAllocation();
     }
     int welcomeMessage()
     {
@@ -235,7 +685,7 @@ int main()
         } else if(input == 2)
         {   
             fflush(stdin);
-            pointBuy();
+            pointBuyInitialise();
         }
     }
  
